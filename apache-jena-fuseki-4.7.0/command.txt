@@ -1,0 +1,3 @@
+On MacOS open Terminal and type:
+
+/Applications/apache-jena-fuseki-4.7.0/fuseki-server --update --mem /ds

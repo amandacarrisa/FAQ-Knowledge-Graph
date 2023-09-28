@@ -1,0 +1,32 @@
+#Find FAQs with the base verb "disalahgunakan", along with other FAQs that have the synonym or entailment pair for it.
+
+PREFIX ex: <http://example.org/> 
+PREFIX ex-verb: <http://example.org/verb/> 
+PREFIX ex-noun: <http://example.org/noun/> 
+PREFIX ex-adj: <http://example.org/adj/> 
+PREFIX ex-class: <http://example.org/class/> 
+PREFIX ex-faq: <http://example.org/faq/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?faqTitle
+WHERE {
+	{ 
+    ?faq dct:subject ex-verb:disalahgunakan .
+    ?faq dct:title ?faqTitle . 
+    }
+  UNION
+    {
+     ?synonym skos:exactMatch ex-verb:disalahgunakan .
+     ?faq dct:subject ?synonym .
+     ?faq dct:title ?faqTitle . 
+    }   
+  UNION
+      {
+     ?entail skos:related ex-verb:disalahgunakan .
+     ?faq dct:subject ?entail .
+     ?faq dct:title ?faqTitle . 
+    }   
+}

@@ -1,0 +1,21 @@
+#Find the FAQs that guide users in using credit cards to pay their bills using the noun keywords "Kartu", "Kredit" and "Tagihan"
+
+PREFIX ex: <http://example.org/> 
+PREFIX ex-verb: <http://example.org/verb/> 
+PREFIX ex-noun: <http://example.org/noun/> 
+PREFIX ex-adj: <http://example.org/adj/> 
+PREFIX ex-class: <http://example.org/class/> 
+PREFIX ex-faq: <http://example.org/faq/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?faqTitle
+WHERE {
+  ?faq rdf:type ex-class:faq .
+  ?faq dct:title ?faqTitle .
+  ?faq dct:subject ex-noun:Kartu ;
+       dct:subject ex-noun:Kredit ;
+       dct:subject ex-noun:Tagihan .
+}
